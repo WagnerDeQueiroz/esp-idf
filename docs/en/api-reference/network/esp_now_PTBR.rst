@@ -1,33 +1,34 @@
 ESP-NOW
 =======
 
-  
 :link_to_translation:`zh_CN:[中文]`
 
-Overview
---------
+Visão geral
+-----------
 
  
 ESP-NOW é um tipo de protocolo de comunicação Wi-Fi sem conexão definido pela Espressif. No ESP-NOW, os dados do aplicativo são encapsulados em um quadro de ação específico do fornecedor e depois transmitidos de um dispositivo Wi-Fi para outro sem conexão.
 
 CTR com protocolo CBC-MAC (CCMP) é usado para proteger o quadro de ação para segurança. ESP-NOW é amplamente utilizado em luz inteligente, controle remoto, sensor, etc.
- 
+
+
 
 Formato do Pacote
 -----------------
 
 Usa um quadro de dados específico do fornecedor para transmitir dados ESP-NOW. A taxa de bits padrão do ESP-NOW é de 1 Mbps. O formato do pacote específico do fornecedor é o seguinte:
- 
-.. highlight:: nenhum
+
+
+ .. highlight:: table
 
 ::
-
-    +-----------+-----------+----------------+-----------+-------------+---------+
-    | Cabecalho |  Codigo   |  Identificador |   Valor   |  Conteudo   |   FCS   |
-    |    MAC    | Categoria | da Organização | Aleatório | especifico  |         |
-    +-----------+-----------+----------------+-----------+-------------+---------+
-    |  24 bytes |  1 byte   |    3 bytes     |  4 bytes  | 7-257 bytes | 4 bytes |
-    +-----------+-----------+----------------+-----------+-------------+---------+
+ 
+ | --------- | --------- | -------------- | --------- | ----------- | ------- |
+ | Cabecalho |  Codigo   |  Identificador |   Valor   |  Conteudo   |   FCS   |
+ |    MAC    | Categoria | da Organização | Aleatório | especifico  |         |
+ | --------- | --------- | -------------- | --------- | ----------- | ------- |
+ |  24 bytes |  1 byte   |    3 bytes     |  4 bytes  | 7-257 bytes | 4 bytes |
+ | --------- | --------- | -------------- | --------- | ----------- | ------- |
   
 - Código da categoria: O campo Código da categoria é definido com o valor (127) que indica a categoria específica do fornecedor.
 - Identificador da Organização: O Identificador da Organização contém um identificador único (0x18fe34), que são os três primeiros bytes do endereço MAC aplicado pelo Espressif.
@@ -136,5 +137,6 @@ Exemplos de aplicação
 
 Referência de API
 -----------------
+
 
 .. include-build-file:: inc/esp_now.inc
